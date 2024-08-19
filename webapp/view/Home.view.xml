@@ -1,0 +1,20 @@
+<mvc:View
+    controllerName="expensetracker.controller.App"
+    xmlns:mvc="sap.ui.core.mvc"
+    displayBlock="true"
+    xmlns:l="sap.ui.layout"
+    xmlns="sap.m"
+    xmlns:f="sap.f"
+><Page
+        id="_IDGenPage1"
+
+        title="{i18n>appTitle}"
+        showHeader="true"
+    >
+        <content>
+
+            <Button text="Hello"></Button>
+
+        </content>
+    </Page>
+</mvc:View>
