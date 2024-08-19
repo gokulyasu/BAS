@@ -1,20 +1,87 @@
 <mvc:View
     controllerName="expensetracker.controller.App"
     xmlns:mvc="sap.ui.core.mvc"
+    xmlns:core="sap.ui.core"
     displayBlock="true"
     xmlns:l="sap.ui.layout"
     xmlns="sap.m"
     xmlns:f="sap.f"
-><Page
+    xmlns:tnt="sap.tnt"
+>
+    <Page
         id="_IDGenPage1"
-
         title="{i18n>appTitle}"
         showHeader="true"
     >
         <content>
+            <HBox
+                renderType="Bare"
+                alignItems="Start"
+                height="100%"
+            >
+                <HBox width="auto">
+                    <tnt:SideNavigation
+                        id="sideNavigation"
+                        selectedKey="{mMainModel>/State/activeCat}"
+                        collapsed="true"
+                        width="auto"
+                    >
+                        <tnt:NavigationList
+                            items="{mMainModel>/Menu/expenseCategories}"
+                            itemSelect="onCollapseExpandPress"
+                        >
+                            <tnt:NavigationListItem
+                                key="{mMainModel>id}"
+                                text="{mMainModel>category}"
+                                icon="{mMainModel>icon}"
+                                expanded="false"
+                            />
+                        </tnt:NavigationList>
+                    </tnt:SideNavigation>
+                </HBox>
+                <VBox visible="{= ${mMainModel>/State/activeCat} !== ''}">
+                    <HBox>
+                        <ComboBox items="{mMainModel>/DropDowns/CatItems}" selectedKey="{mMainModel>/State/CatItem}" selectionChange="handleChange">
+                            <core:Item
+                                key="{mMainModel>key}"
+                                text="{mMainModel>name}"
+                            />
+                        </ComboBox>
+                    </HBox>
+                    <VBox visible="{=${mMainModel>/State/CatItem}==='rent'}">
+                        <Label text="Amount" />
+                        <Input
+                            id="rentAmount"
+                            type="Number"
+                            placeholder="Enter amount"
+                        />
 
-            <Button text="Hello"></Button>
+                        <Label text="Date" />
+                        <DatePicker
+                            id="rentDate"
+                            placeholder="Select date"
+                        />
 
+                        <Label text="Payment Method" />
+                        <Input
+                            id="rentPaymentMethod"
+                            placeholder="Enter payment method"
+                        />
+
+                        <Label text="Landlord or Mortgage Provider" />
+                        <Input
+                            id="rentProvider"
+                            placeholder="Enter landlord or provider name"
+                        />
+
+                        <Label text="Notes" />
+                        <TextArea
+                            id="rentNotes"
+                            placeholder="Enter additional details"
+                        />
+                    </VBox>
+                </VBox>
+            </HBox>
         </content>
     </Page>
 </mvc:View>
