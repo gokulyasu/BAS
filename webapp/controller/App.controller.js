@@ -17,7 +17,14 @@ sap.ui.define([
 
                 var oModel = this.getView().getModel("mMainModel");
                 var menuData = {
-                    "expenseCategories": [
+                    "expenseCategories": [   {
+                        "id": "overall",
+                        "category": "Overall",
+                        "icon": "sap-icon://bar-chart",
+                        "items": [
+                    
+                        ]
+                    },
                         {
                             "id": "housing",
                             "category": "Housing",
@@ -199,7 +206,8 @@ sap.ui.define([
 
 
 
-                var selKey = oEvent.getSource().getParent().getSelectedKey();
+                // var selKey = oEvent.getSource().getParent().getSelectedKey();
+                var selKey = oEvent.getParameter('item').getKey();
                 var menuData = oModel.getProperty("/Menu/expenseCategories");
 
                 var dropData = menuData.filter(function (item) {
