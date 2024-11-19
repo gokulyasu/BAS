@@ -41,12 +41,12 @@
                 </HBox>
                 <VBox visible="{= ${mMainModel>/State/activeCat} !== ''}">
                     <HBox>
-                        <ComboBox items="{mMainModel>/DropDowns/CatItems}" selectedKey="{mMainModel>/State/CatItem}" selectionChange="handleChange">
+                        <Select items="{mMainModel>/DropDowns/CatItems}" selectedKey="{mMainModel>/State/CatItem}" selectionChange="handleChange">
                             <core:Item
                                 key="{mMainModel>key}"
                                 text="{mMainModel>name}"
                             />
-                        </ComboBox>
+                        </Select>
                     </HBox>
                     <VBox visible="{=${mMainModel>/State/CatItem}==='rent'}">
                         <Label text="Amount" />

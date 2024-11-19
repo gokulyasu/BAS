@@ -22,7 +22,12 @@ sap.ui.define([
                         "category": "Overall",
                         "icon": "sap-icon://bar-chart",
                         "items": [
-                    
+                            { "name": "Day", "key": "today" },
+                            { "name": "Month", "key": "month" },
+                            { "name": "Year", "key": "year" }
+                            
+                            
+
                         ]
                     },
                         {
